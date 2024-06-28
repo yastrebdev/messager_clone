@@ -1,8 +1,16 @@
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import DesctopSidebar from "./DesctopSidebar";
+import MobileFooter from "./MobileFooter";
+
 async function Sidebar({ children }: {
     children: React.ReactNode;
 }) {
+    const currentUser = await getCurrentUser();
+
     return (
         <div className="h-full">
+            <DesctopSidebar currentUser={currentUser!}/>
+            <MobileFooter />
             <main className="lg:pl-20 h-full">
                 {children}
             </main>
